@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5e126xm3kgjd"]
+
+[ext_resource type="Script" uid="uid://bn2ktvop2u3fm" path="res://scenes/UI/game_over.gd" id="1_njkqv"]
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_njkqv")
+
+[node name="lblGameOver" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -746.0
+offset_top = 112.0
+offset_right = 749.0
+offset_bottom = 454.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 250
+text = "Game Over!!"
+
+[node name="btnTryAgain" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -370.0
+offset_top = -14.0
+offset_right = 350.0
+offset_bottom = 199.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 150
+text = "Try Again"
+
+[node name="btnReturnMainMenu" type="Button" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -306.0
+offset_top = -212.0
+offset_right = 300.0
+offset_bottom = -94.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 80
+text = "Return To Title"
+
+[connection signal="pressed" from="btnTryAgain" to="." method="_on_btn_try_again_pressed"]
+[connection signal="pressed" from="btnReturnMainMenu" to="." method="_on_btn_return_main_menu_pressed"]

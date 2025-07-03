@@ -1,0 +1,134 @@
+[gd_scene load_steps=15 format=3 uid="uid://bkmetairadjew"]
+
+[ext_resource type="Script" uid="uid://bbt2cymfxw17" path="res://scenes/entity/player.gd" id="1_4y4uh"]
+[ext_resource type="Texture2D" uid="uid://dsn5lv00ojo76" path="res://assets/entity/player/playerGrey_up1.png" id="1_poj5f"]
+[ext_resource type="Texture2D" uid="uid://b8bd0y6h6n1x2" path="res://assets/entity/player/playerGrey_up2.png" id="2_4y4uh"]
+[ext_resource type="Shader" uid="uid://cx4p163wyy384" path="res://shaders/hitflash.tres" id="2_t8xyy"]
+[ext_resource type="Texture2D" uid="uid://cncm5cv4nqvjd" path="res://assets/entity/player/playerGrey_walk1.png" id="3_t8xyy"]
+[ext_resource type="Texture2D" uid="uid://28f8h5dw3aww" path="res://assets/entity/player/playerGrey_walk2.png" id="4_j8jve"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j8jve"]
+shader = ExtResource("2_t8xyy")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k4nkw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_poj5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4y4uh")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_t8xyy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_j8jve")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t8xyy"]
+radius = 48.0881
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_poj5f"]
+radius = 48.0104
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4y4uh"]
+radius = 56.0
+height = 128.0
+
+[sub_resource type="Animation" id="Animation_j8jve"]
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.366667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, false]
+}
+
+[sub_resource type="Animation" id="Animation_t8xyy"]
+resource_name = "hit_flash"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k4nkw"]
+_data = {
+&"RESET": SubResource("Animation_j8jve"),
+&"hit_flash": SubResource("Animation_t8xyy")
+}
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 16
+script = ExtResource("1_4y4uh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_j8jve")
+sprite_frames = SubResource("SpriteFrames_k4nkw")
+animation = &"walk"
+frame = 1
+frame_progress = 0.0901135
+
+[node name="CollisionWall" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10.91)
+shape = SubResource("CircleShape2D_t8xyy")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -11)
+shape = SubResource("CircleShape2D_poj5f")
+
+[node name="tmr_is_moving_score" type="Timer" parent="."]
+
+[node name="Back" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 34
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Back"]
+shape = SubResource("CapsuleShape2D_4y4uh")
+
+[node name="tmr_invincibility" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="HitFlashAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_k4nkw")
+}
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1.8975, -12.54)
+scale = Vector2(4.61025, 1.146)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="tmr_is_moving_score" to="." method="_on_tmr_is_moving_score_timeout"]
+[connection signal="area_entered" from="Back" to="." method="_on_back_area_entered"]
+[connection signal="timeout" from="tmr_invincibility" to="." method="_on_tmr_invincibility_timeout"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

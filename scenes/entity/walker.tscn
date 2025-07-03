@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://c403sqwiyp2u2"]
+
+[ext_resource type="Script" uid="uid://dtdcfa1fv8my8" path="res://scenes/entity/walker.gd" id="1_s88c8"]
+[ext_resource type="Texture2D" uid="uid://4sw61aggdc5l" path="res://assets/entity/enemies/enemyWalking_1.png" id="1_sbhmi"]
+[ext_resource type="Texture2D" uid="uid://cmk0ptys0fxmk" path="res://assets/entity/enemies/enemyWalking_2.png" id="2_s88c8"]
+[ext_resource type="Script" uid="uid://dh0qexs7e4mlw" path="res://scenes/entity/back.gd" id="4_33v6c"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_33v6c"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_sbhmi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_s88c8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sbhmi"]
+resource_local_to_scene = true
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s88c8"]
+resource_local_to_scene = true
+size = Vector2(48, 96)
+
+[node name="Walker" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_s88c8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_33v6c")
+autoplay = "default"
+frame = 1
+frame_progress = 0.531016
+
+[node name="HurtBox" type="CollisionShape2D" parent="."]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_sbhmi")
+
+[node name="Back" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("4_33v6c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Back"]
+position = Vector2(-40, 0)
+shape = SubResource("RectangleShape2D_s88c8")
+
+[connection signal="area_entered" from="Back" to="." method="_on_back_area_entered"]

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://w15cmre2dsor"]
+
+[ext_resource type="PackedScene" uid="uid://bkmetairadjew" path="res://scenes/entity/player.tscn" id="1_jjpsa"]
+[ext_resource type="PackedScene" uid="uid://c403sqwiyp2u2" path="res://scenes/entity/walker.tscn" id="2_d850f"]
+
+[node name="TestingArea" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_jjpsa")]
+speed = null
+
+[node name="Walker" parent="." instance=ExtResource("2_d850f")]
+position = Vector2(622, 436)
