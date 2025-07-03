@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c4o24a1kv1wvh" path="res://scenes/interactable/coin.tscn" id="6_66b72"]
 [ext_resource type="Script" uid="uid://13wreegmiwuh" path="res://assets/world/path_follow_2d.gd" id="6_etu8f"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_66b72"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_etu8f"]
 texture = ExtResource("5_ert8t")
 0:0/0 = 0
 1:0/0 = 0
@@ -137,7 +137,7 @@ texture = ExtResource("5_ert8t")
 
 [sub_resource type="TileSet" id="TileSet_etu8f"]
 physics_layer_0/collision_layer = 16
-sources/0 = SubResource("TileSetAtlasSource_66b72")
+sources/0 = SubResource("TileSetAtlasSource_etu8f")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ert8t"]
 
