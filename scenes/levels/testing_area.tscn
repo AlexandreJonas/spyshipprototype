@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ceiildqaww2mb" path="res://scenes/entity/swimmer.tscn" id="4_vltsd"]
 [ext_resource type="Texture2D" uid="uid://d2to8j18l6wid" path="res://assets/world/world_tileset.png" id="5_ert8t"]
 [ext_resource type="PackedScene" uid="uid://c4o24a1kv1wvh" path="res://scenes/interactable/coin.tscn" id="6_66b72"]
-[ext_resource type="Script" uid="uid://13wreegmiwuh" path="res://assets/world/path_follow_2d.gd" id="6_etu8f"]
+[ext_resource type="Script" uid="uid://c6msmawl4uuls" path="res://scenes/components/path_follow_2d.gd" id="6_etu8f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_etu8f"]
 texture = ExtResource("5_ert8t")
@@ -149,7 +149,7 @@ sources/0 = SubResource("TileSetAtlasSource_etu8f")
 
 [sub_resource type="Curve2D" id="Curve2D_66b72"]
 _data = {
-"points": PackedVector2Array(-173.436, 288.469, 173.436, -288.469, 1272, 224, 0, 0, 0, 0, 1624, 232, -1.94872, -233.275, 1.94872, 233.275, 1624, 736, 0, 157.104, 0, -157.104, 1264, 744, 0, 0, 0, 0, 1272, 224)
+"points": PackedVector2Array(0, 157.104, 0, -157.104, 1280, 744, 0, 0, 0, 0, 1280, -291.832, 0, 0, 0, 0, 1984, -291.832, 0, 0, 0, 0, 1984, 753.772, 0, -4.32793, 0, 4.32793, 1280, 744)
 }
 point_count = 5
 
@@ -217,12 +217,12 @@ scale = Vector2(1, 0.818665)
 curve = SubResource("Curve2D_66b72")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(1272, 224)
-rotation = -1.02947
+position = Vector2(1280, 744)
+rotation = -1.5708
 script = ExtResource("6_etu8f")
 
 [node name="Swimmer" parent="Path2D/PathFollow2D" instance=ExtResource("4_vltsd")]
-rotation = -0.523599
+rotation = 0.017724
 scale = Vector2(1, 1.2215)
 
 [connection signal="add_score" from="Player" to="LevelHUD" method="_on_player_add_score"]

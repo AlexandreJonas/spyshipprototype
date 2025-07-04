@@ -53,4 +53,12 @@ back_score = 10
 position = Vector2(-44, 0)
 shape = SubResource("RectangleShape2D_s88c8")
 
+[node name="MobOnScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+
 [connection signal="area_entered" from="Back" to="." method="_on_back_area_entered"]
+[connection signal="screen_entered" from="MobOnScreenNotifier" to="." method="_on_mob_on_screen_notifier_screen_entered"]
+[connection signal="screen_exited" from="MobOnScreenNotifier" to="." method="_on_mob_on_screen_notifier_screen_exited"]
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]

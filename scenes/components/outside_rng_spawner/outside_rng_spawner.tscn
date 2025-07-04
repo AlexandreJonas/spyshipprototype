@@ -9,9 +9,4 @@ script = ExtResource("1_bal5n")
 wait_time = 0.5
 autostart = true
 
-[node name="MobOnScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
-
-[node name="DespawnTimer" type="Timer" parent="."]
-wait_time = 2.0
-
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

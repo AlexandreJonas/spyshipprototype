@@ -20,6 +20,7 @@ func _on_mob_timer_timeout() -> void:
 	# Create a new instance of the Mob scene.
 	var mob = mob_scene.instantiate()
 	
+	mob.is_deletable = true
 	# Choose a random location on Path2D.
 	var mob_spawn_location : PathFollow2D = mob_path.get_children().get(0)
 	mob_spawn_location.progress_ratio = randf()
@@ -35,7 +36,6 @@ func _on_mob_timer_timeout() -> void:
 	mob.rotation = direction
 
 	# Choose the velocity for the mob.
-	print(mob.speed)
 	var velocity = Vector2(mob.speed, 0.0)
 	mob.linear_velocity = velocity.rotated(direction)
 
