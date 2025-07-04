@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://c1n402kurieya"]
+
+[ext_resource type="PackedScene" uid="uid://bkmetairadjew" path="res://scenes/entity/player.tscn" id="1_1ibla"]
+[ext_resource type="PackedScene" uid="uid://bdmnr5wbwsysp" path="res://scenes/UI/level_hud.tscn" id="2_rp2hk"]
+[ext_resource type="PackedScene" uid="uid://dubigt6rlvv62" path="res://scenes/components/outside_rng_spawner/outside_rng_spawner.tscn" id="3_rp2hk"]
+[ext_resource type="PackedScene" uid="uid://ceiildqaww2mb" path="res://scenes/entity/swimmer.tscn" id="4_smegm"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_smegm"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ce5vw"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8o7m0"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_uspm2"]
+
+[sub_resource type="Curve2D" id="Curve2D_smegm"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -192, -192, 0, 0, 0, 0, -192, 1080, 0, 0, 0, 0, 1824.37, 1088, 0, 0, 0, 0, 1824.37, -192, 0, 0, 0, 0, -192, -192)
+}
+point_count = 5
+
+[node name="RngSpanwerTest" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_1ibla")]
+
+[node name="LevelHUD" parent="." instance=ExtResource("2_rp2hk")]
+
+[node name="CameraWall" type="StaticBody2D" parent="."]
+collision_layer = 16
+
+[node name="Down" type="CollisionShape2D" parent="CameraWall"]
+position = Vector2(96, 960)
+shape = SubResource("WorldBoundaryShape2D_smegm")
+
+[node name="Left" type="CollisionShape2D" parent="CameraWall"]
+position = Vector2(-48, 840)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_ce5vw")
+
+[node name="Up" type="CollisionShape2D" parent="CameraWall"]
+position = Vector2(96, -48)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_8o7m0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraWall"]
+position = Vector2(1744, 208)
+rotation = 4.71239
+shape = SubResource("WorldBoundaryShape2D_uspm2")
+
+[node name="OutsideRngSpawner" parent="." node_paths=PackedStringArray("mob_path") instance=ExtResource("3_rp2hk")]
+mob_path = NodePath("../MobPath")
+mob_scene = ExtResource("4_smegm")
+is_active = true
+
+[node name="MobPath" type="Path2D" parent="."]
+position = Vector2(2.25, 1.52588e-05)
+scale = Vector2(1.01172, 1)
+curve = SubResource("Curve2D_smegm")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="MobPath"]
+position = Vector2(-192, -192)
+rotates = false
+cubic_interp = false
+
+[connection signal="add_score" from="Player" to="LevelHUD" method="_on_player_add_score"]
+[connection signal="hit" from="Player" to="LevelHUD" method="_on_player_hit"]

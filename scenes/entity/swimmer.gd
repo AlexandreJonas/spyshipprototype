@@ -1,5 +1,6 @@
 extends RigidBody2D
 
+@export var speed : int = 100 
 signal entered_by_back(score: int, score_message :String)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

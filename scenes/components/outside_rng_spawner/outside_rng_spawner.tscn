@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dubigt6rlvv62"]
+
+[ext_resource type="Script" uid="uid://3ldm6uwbuis6" path="res://scenes/components/outside_rng_spawner/outside_rng_spawner.gd" id="1_bal5n"]
+
+[node name="OutsideRngSpawner" type="Node"]
+script = ExtResource("1_bal5n")
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="MobOnScreenNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="DespawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
