@@ -1,4 +1,6 @@
 extends CanvasLayer
+
+@export var current_scene_path: String = "res://scenes/levels/testing_area.tscn"
 var score :int = 0
 var lifes :int = 3
 signal game_over
@@ -26,7 +28,7 @@ func update_lifes(life_to_sub:int) -> void:
 		$lbl_life_value.text = str(lifes)
 	else:
 		game_over.emit()
-		Global.current_scene_path = "res://scenes/levels/testing_area.tscn"
+		Global.current_scene_path = current_scene_path
 		Global.goto_scene("res://scenes/UI/game_over.tscn")
 		
 func new_game() -> void:

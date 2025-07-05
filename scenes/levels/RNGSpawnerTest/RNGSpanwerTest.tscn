@@ -24,6 +24,7 @@ point_count = 5
 [node name="Player" parent="." instance=ExtResource("1_1ibla")]
 
 [node name="LevelHUD" parent="." instance=ExtResource("2_rp2hk")]
+current_scene_path = "res://scenes/levels/RNGSpawnerTest/RNGSpanwerTest.tscn"
 
 [node name="CameraWall" type="StaticBody2D" parent="."]
 collision_layer = 16
