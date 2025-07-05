@@ -84,7 +84,7 @@ _data = {
 &"hit_flash": SubResource("Animation_t8xyy")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_mask = 16
 script = ExtResource("1_4y4uh")
 
