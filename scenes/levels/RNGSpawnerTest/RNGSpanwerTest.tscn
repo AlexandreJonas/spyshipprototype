@@ -100,7 +100,7 @@ curve = SubResource("Curve2D_uspm2")
 [node name="PathFollowMob" parent="PathGroup/SingleMobSpawner22/PathMob2" instance=ExtResource("5_8o7m0")]
 position = Vector2(448, 64)
 rotation = 1.5708
-speed = 0.2
+speed = 0.12
 
 [connection signal="add_score" from="Player" to="LevelHUD" method="_on_player_add_score"]
 [connection signal="hit" from="Player" to="LevelHUD" method="_on_player_hit"]
