@@ -6,10 +6,11 @@ extends Node
 @export var high_speed : int = 300
 @export var low_speed : int = 150
 @export var direction_offset : int = - PI / 2
+@export var wait_time : float = 0.5
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	$MobTimer.wait_time = wait_time
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

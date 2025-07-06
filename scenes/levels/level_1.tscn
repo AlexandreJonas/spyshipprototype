@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://gawuk0pgki82"]
+[gd_scene load_steps=13 format=3 uid="uid://gawuk0pgki82"]
 
 [ext_resource type="PackedScene" uid="uid://bkmetairadjew" path="res://scenes/entity/player.tscn" id="1_6iamk"]
 [ext_resource type="PackedScene" uid="uid://bdmnr5wbwsysp" path="res://scenes/UI/level_hud.tscn" id="2_nsrm0"]
 [ext_resource type="Texture2D" uid="uid://d2to8j18l6wid" path="res://assets/world/world_tileset.png" id="3_nsrm0"]
+[ext_resource type="PackedScene" uid="uid://dubigt6rlvv62" path="res://scenes/components/outside_rng_spawner/outside_rng_spawner.tscn" id="4_6761a"]
+[ext_resource type="PackedScene" uid="uid://ceiildqaww2mb" path="res://scenes/entity/swimmer.tscn" id="5_sk5k4"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6iamk"]
 
@@ -144,6 +146,12 @@ texture = ExtResource("3_nsrm0")
 physics_layer_0/collision_layer = 16
 sources/0 = SubResource("TileSetAtlasSource_x42e6")
 
+[sub_resource type="Curve2D" id="Curve2D_6761a"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -64, -72, 0, 0, 0, 0, -64, 1024, 0, 0, 0, 0, 1784, 1024, 0, 0, 0, 0, 1784, -72, 0, 0, 0, 0, -64, -72)
+}
+point_count = 5
+
 [node name="Level_1" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_6iamk")]
@@ -178,6 +186,19 @@ scale = Vector2(4.1, 4.1)
 tile_set = SubResource("TileSet_6761a")
 format = 2
 layer_0/tile_data = PackedInt32Array(655367, 524288, 0, 589831, 524288, 0, 524295, 524288, 0, 458759, 524288, 0, 393223, 524288, 0, 327687, 524288, 0, 327684, 524288, 0, 393220, 524288, 0, 458756, 524288, 0, 524292, 524288, 0, 589828, 524288, 0, 655364, 524288, 0, 655365, 524288, 0, 655366, 524288, 0, 262148, 458752, 0, 262149, 458752, 0, 262150, 458752, 0, 262151, 458752, 0, 12, 524288, 1, 65548, 524288, 1, 131084, 458752, 805306368, 720908, 458752, 0, 786444, 524288, 1, 851980, 524288, 1, 13, 524288, 1, 65549, 524288, 1, 131085, 458752, 805306368, 720909, 458752, 0, 786445, 524288, 1, 851981, 524288, 1, 14, 524288, 1, 65550, 524288, 1, 131086, 458752, 805306368, 720910, 458752, 0, 786446, 524288, 1, 851982, 524288, 1, 15, 524288, 1, 65551, 524288, 1, 131087, 458752, 805306368, 720911, 458752, 0, 786447, 524288, 1, 851983, 524288, 1, 16, 524288, 1, 65552, 524288, 1, 131088, 458752, 805306368, 720912, 458752, 0, 786448, 524288, 1, 851984, 524288, 1, 17, 524288, 1, 65553, 524288, 1, 131089, 458752, 805306368, 720913, 458752, 0, 786449, 524288, 1, 851985, 524288, 1, 18, 524288, 1, 65554, 524288, 1, 131090, 458752, 805306368, 720914, 458752, 0, 786450, 524288, 1, 851986, 524288, 1, 19, 524288, 1, 65555, 524288, 1, 131091, 458752, 805306368, 720915, 458752, 0, 786451, 524288, 1, 851987, 524288, 1, 20, 524288, 1, 65556, 524288, 1, 131092, 458752, 805306368, 720916, 458752, 0, 786452, 524288, 1, 851988, 524288, 1, 21, 524288, 1, 65557, 524288, 1, 131093, 458752, 805306368, 720917, 458752, 0, 786453, 524288, 1, 851989, 524288, 1, 11, 524288, 1, 65547, 524288, 1, 131083, 458752, 805306368, 720907, 458752, 0, 786443, 524288, 1, 851979, 524288, 1, 262168, 458752, 1610612736, 327704, 458752, 1610612736, 393240, 458752, 1610612736, 458776, 458752, 1610612736, 524312, 458752, 1610612736, 589848, 458752, 1610612736, 262169, 524288, 0, 327705, 524288, 0, 393241, 524288, 0, 458777, 524288, 0, 524313, 524288, 0, 589849, 524288, 0)
+
+[node name="OutsideRngSpawner" parent="." node_paths=PackedStringArray("mob_path") instance=ExtResource("4_6761a")]
+mob_path = NodePath("../Path2D")
+mob_scene = ExtResource("5_sk5k4")
+is_active = true
+wait_time = 1.0
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_6761a")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-64, -72)
+rotation = 1.5708
 
 [connection signal="add_score" from="Player" to="LevelHUD" method="_on_player_add_score"]
 [connection signal="hit" from="Player" to="LevelHUD" method="_on_player_hit"]
