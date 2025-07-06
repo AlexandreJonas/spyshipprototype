@@ -1,11 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://gawuk0pgki82"]
+[gd_scene load_steps=16 format=3 uid="uid://gawuk0pgki82"]
 
 [ext_resource type="PackedScene" uid="uid://bkmetairadjew" path="res://scenes/entity/player.tscn" id="1_6iamk"]
 [ext_resource type="PackedScene" uid="uid://bdmnr5wbwsysp" path="res://scenes/UI/level_hud.tscn" id="2_nsrm0"]
 [ext_resource type="Texture2D" uid="uid://d2to8j18l6wid" path="res://assets/world/world_tileset.png" id="3_nsrm0"]
 [ext_resource type="PackedScene" uid="uid://dubigt6rlvv62" path="res://scenes/components/outside_rng_spawner/outside_rng_spawner.tscn" id="4_6761a"]
 [ext_resource type="PackedScene" uid="uid://ceiildqaww2mb" path="res://scenes/entity/swimmer.tscn" id="5_sk5k4"]
-[ext_resource type="PackedScene" uid="uid://djvjydc273kt1" path="res://scenes/components/path_follow_mob/path_follow_mob.tscn" id="6_sk5k4"]
 [ext_resource type="PackedScene" uid="uid://bxwgfbjvbuicb" path="res://scenes/components/single_mob_spawner/single_mob_spawner.tscn" id="7_oc4kc"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6iamk"]
@@ -221,14 +220,6 @@ rotation = 1.5708
 [node name="MobPath1" type="Path2D" parent="SpawnLines/Line1"]
 curve = SubResource("Curve2D_oc4kc")
 
-[node name="MobPathFollow1" parent="SpawnLines/Line1/MobPath1" instance=ExtResource("6_sk5k4")]
-position = Vector2(120, 128)
-rotation = 1.5708
-
-[node name="MobPathFollow2" parent="SpawnLines/Line1/MobPath1" instance=ExtResource("6_sk5k4")]
-position = Vector2(120, 128)
-rotation = 1.5708
-
 [node name="Enemies" type="Node" parent="SpawnLines/Line1"]
 
 [node name="SingleMobSpawner" parent="SpawnLines/Line1/Enemies" node_paths=PackedStringArray("mob_path") instance=ExtResource("7_oc4kc")]
@@ -239,7 +230,6 @@ spawn_path_point = 0.135
 [node name="SingleMobSpawner2" parent="SpawnLines/Line1/Enemies" node_paths=PackedStringArray("mob_path") instance=ExtResource("7_oc4kc")]
 mob_path = NodePath("../../MobPath1")
 mob_scene = ExtResource("5_sk5k4")
-path_follow_index = 1
 spawn_path_point = 0.658
 
 [node name="Line2" type="Node" parent="SpawnLines"]
@@ -247,14 +237,10 @@ spawn_path_point = 0.658
 [node name="MobPath2" type="Path2D" parent="SpawnLines/Line2"]
 curve = SubResource("Curve2D_s8va5")
 
-[node name="MobPathFollow1" parent="SpawnLines/Line2/MobPath2" instance=ExtResource("6_sk5k4")]
-position = Vector2(704, 256)
-rotation = 1.5708
-speed = 0.11
-
 [node name="SingleMobSpawner" parent="SpawnLines/Line2" node_paths=PackedStringArray("mob_path") instance=ExtResource("7_oc4kc")]
 mob_path = NodePath("../MobPath2")
 mob_scene = ExtResource("5_sk5k4")
+speed = 0.3
 spawn_path_point = 0.333
 
 [connection signal="add_score" from="Player" to="LevelHUD" method="_on_player_add_score"]
