@@ -10,9 +10,10 @@ func _process(delta: float) -> void:
 	progress_ratio += delta * speed
 
 func add_mob(spawn_path_point : float, mob_scene : PackedScene) -> void :
-	var mob = mob_scene.instantiate()
-	
-	progress_ratio = spawn_path_point
-	
-	mob.position = Vector2(0,0)
-	add_child(mob)
+	pass
+	#var mob = mob_scene.instantiate()
+	#
+	#progress_ratio = spawn_path_point
+	#
+	#mob.position = Vector2(0,0)
+	#add_child(mob)

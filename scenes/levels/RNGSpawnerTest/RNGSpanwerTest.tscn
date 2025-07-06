@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1n402kurieya"]
+[gd_scene load_steps=14 format=3 uid="uid://c1n402kurieya"]
 
 [ext_resource type="PackedScene" uid="uid://bkmetairadjew" path="res://scenes/entity/player.tscn" id="1_1ibla"]
 [ext_resource type="PackedScene" uid="uid://bdmnr5wbwsysp" path="res://scenes/UI/level_hud.tscn" id="2_rp2hk"]
@@ -23,7 +23,13 @@ point_count = 5
 
 [sub_resource type="Curve2D" id="Curve2D_8o7m0"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 128, 640, 0, 0, 0, 0, 128, 888, 0, 0, 0, 0, 632, 888, 0, 0, 0, 0, 632, 640, 0, 0, 0, 0, 128, 640)
+"points": PackedVector2Array(0, 0, 0, 0, 184, 576, 0, 0, 0, 0, 192, 896, 0, 0, 0, 0, 824, 888, 0, 0, 0, 0, 824, 576, 0, 0, 0, 0, 184, 576)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_uspm2"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 448, 64, 0, 0, 0, 0, 448, 704, 0, 0, 0, 0, 1472, 704, 0, 0, 0, 0, 1472, 56, 0, 0, 0, 0, 448, 64)
 }
 point_count = 5
 
@@ -72,17 +78,29 @@ cubic_interp = false
 
 [node name="PathGroup" type="Node" parent="."]
 
-[node name="PathSpawn1" type="Path2D" parent="PathGroup"]
-curve = SubResource("Curve2D_8o7m0")
-
-[node name="PathFollowMob" parent="PathGroup/PathSpawn1" instance=ExtResource("5_8o7m0")]
-position = Vector2(128, 640)
-rotation = 1.5708
-
-[node name="SingleMobSpawner" parent="." node_paths=PackedStringArray("mob_path") instance=ExtResource("5_ce5vw")]
-mob_path = NodePath("../PathGroup/PathSpawn1")
+[node name="SingleMobSpawner" parent="PathGroup" node_paths=PackedStringArray("mob_path") instance=ExtResource("5_ce5vw")]
+mob_path = NodePath("PathMob1")
 mob_scene = ExtResource("4_smegm")
 spawn_path_point = 0.09
+
+[node name="PathMob1" type="Path2D" parent="PathGroup/SingleMobSpawner"]
+curve = SubResource("Curve2D_8o7m0")
+
+[node name="PathFollowMob" parent="PathGroup/SingleMobSpawner/PathMob1" instance=ExtResource("5_8o7m0")]
+position = Vector2(184, 576)
+rotation = 1.5458
+
+[node name="SingleMobSpawner22" parent="PathGroup" node_paths=PackedStringArray("mob_path") instance=ExtResource("5_ce5vw")]
+mob_path = NodePath("PathMob2")
+mob_scene = ExtResource("4_smegm")
+
+[node name="PathMob2" type="Path2D" parent="PathGroup/SingleMobSpawner22"]
+curve = SubResource("Curve2D_uspm2")
+
+[node name="PathFollowMob" parent="PathGroup/SingleMobSpawner22/PathMob2" instance=ExtResource("5_8o7m0")]
+position = Vector2(448, 64)
+rotation = 1.5708
+speed = 0.2
 
 [connection signal="add_score" from="Player" to="LevelHUD" method="_on_player_add_score"]
 [connection signal="hit" from="Player" to="LevelHUD" method="_on_player_hit"]
