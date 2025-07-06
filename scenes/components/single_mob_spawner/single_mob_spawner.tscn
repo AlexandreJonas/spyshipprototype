@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxwgfbjvbuicb"]
+
+[ext_resource type="Script" uid="uid://cm0bvhih7gvx6" path="res://scenes/components/single_mob_spawner/single_mob_spawner.gd" id="1_fiua6"]
+
+[node name="SingleMobSpawner" type="Node"]
+script = ExtResource("1_fiua6")

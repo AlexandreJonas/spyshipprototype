@@ -1,9 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1n402kurieya"]
+[gd_scene load_steps=13 format=3 uid="uid://c1n402kurieya"]
 
 [ext_resource type="PackedScene" uid="uid://bkmetairadjew" path="res://scenes/entity/player.tscn" id="1_1ibla"]
 [ext_resource type="PackedScene" uid="uid://bdmnr5wbwsysp" path="res://scenes/UI/level_hud.tscn" id="2_rp2hk"]
 [ext_resource type="PackedScene" uid="uid://dubigt6rlvv62" path="res://scenes/components/outside_rng_spawner/outside_rng_spawner.tscn" id="3_rp2hk"]
 [ext_resource type="PackedScene" uid="uid://ceiildqaww2mb" path="res://scenes/entity/swimmer.tscn" id="4_smegm"]
+[ext_resource type="PackedScene" uid="uid://djvjydc273kt1" path="res://scenes/components/path_follow_mob/path_follow_mob.tscn" id="5_8o7m0"]
+[ext_resource type="PackedScene" uid="uid://bxwgfbjvbuicb" path="res://scenes/components/single_mob_spawner/single_mob_spawner.tscn" id="5_ce5vw"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_smegm"]
 
@@ -16,6 +18,12 @@
 [sub_resource type="Curve2D" id="Curve2D_smegm"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -192, -192, 0, 0, 0, 0, -192, 1080, 0, 0, 0, 0, 1824.37, 1088, 0, 0, 0, 0, 1824.37, -192, 0, 0, 0, 0, -192, -192)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_8o7m0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 128, 640, 0, 0, 0, 0, 128, 888, 0, 0, 0, 0, 632, 888, 0, 0, 0, 0, 632, 640, 0, 0, 0, 0, 128, 640)
 }
 point_count = 5
 
@@ -51,7 +59,6 @@ shape = SubResource("WorldBoundaryShape2D_uspm2")
 [node name="OutsideRngSpawner" parent="." node_paths=PackedStringArray("mob_path") instance=ExtResource("3_rp2hk")]
 mob_path = NodePath("../MobPath")
 mob_scene = ExtResource("4_smegm")
-is_active = true
 
 [node name="MobPath" type="Path2D" parent="."]
 position = Vector2(2.25, 1.52588e-05)
@@ -62,6 +69,20 @@ curve = SubResource("Curve2D_smegm")
 position = Vector2(-192, -192)
 rotates = false
 cubic_interp = false
+
+[node name="PathGroup" type="Node" parent="."]
+
+[node name="PathSpawn1" type="Path2D" parent="PathGroup"]
+curve = SubResource("Curve2D_8o7m0")
+
+[node name="PathFollowMob" parent="PathGroup/PathSpawn1" instance=ExtResource("5_8o7m0")]
+position = Vector2(128, 640)
+rotation = 1.5708
+
+[node name="SingleMobSpawner" parent="." node_paths=PackedStringArray("mob_path") instance=ExtResource("5_ce5vw")]
+mob_path = NodePath("../PathGroup/PathSpawn1")
+mob_scene = ExtResource("4_smegm")
+spawn_path_point = 0.09
 
 [connection signal="add_score" from="Player" to="LevelHUD" method="_on_player_add_score"]
 [connection signal="hit" from="Player" to="LevelHUD" method="_on_player_hit"]
