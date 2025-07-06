@@ -6,6 +6,7 @@
 script = ExtResource("1_bal5n")
 
 [node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
 autostart = true
 
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
