@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://gawuk0pgki82"]
+[gd_scene load_steps=18 format=3 uid="uid://gawuk0pgki82"]
 
 [ext_resource type="PackedScene" uid="uid://bkmetairadjew" path="res://scenes/entity/player.tscn" id="1_6iamk"]
 [ext_resource type="PackedScene" uid="uid://bdmnr5wbwsysp" path="res://scenes/UI/level_hud.tscn" id="2_nsrm0"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dubigt6rlvv62" path="res://scenes/components/outside_rng_spawner/outside_rng_spawner.tscn" id="4_6761a"]
 [ext_resource type="PackedScene" uid="uid://ceiildqaww2mb" path="res://scenes/entity/swimmer.tscn" id="5_sk5k4"]
 [ext_resource type="PackedScene" uid="uid://bxwgfbjvbuicb" path="res://scenes/components/single_mob_spawner/single_mob_spawner.tscn" id="7_oc4kc"]
+[ext_resource type="PackedScene" uid="uid://di1nbynaq8cib" path="res://scenes/components/single_collectible_spawner/single_collectible_spawner.tscn" id="7_s8va5"]
+[ext_resource type="PackedScene" uid="uid://c4o24a1kv1wvh" path="res://scenes/interactable/coin.tscn" id="8_dga24"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6iamk"]
 
@@ -243,6 +245,32 @@ mob_path = NodePath("../MobPath2")
 mob_scene = ExtResource("5_sk5k4")
 speed = 0.3
 spawn_path_point = 0.333
+
+[node name="Collectibles" type="Node" parent="."]
+
+[node name="Wave1" type="Node" parent="Collectibles"]
+
+[node name="SingleCollectibleSpawner" parent="Collectibles/Wave1" node_paths=PackedStringArray("collectible_marker") instance=ExtResource("7_s8va5")]
+collectible_scene = ExtResource("8_dga24")
+collectible_marker = NodePath("Collectible1")
+
+[node name="Collectible1" type="Marker2D" parent="Collectibles/Wave1/SingleCollectibleSpawner"]
+position = Vector2(1536, 472)
+
+[node name="SingleCollectibleSpawner2" parent="Collectibles/Wave1" node_paths=PackedStringArray("collectible_marker") instance=ExtResource("7_s8va5")]
+collectible_scene = ExtResource("8_dga24")
+collectible_marker = NodePath("Collectible2")
+time_on_screen = 20
+
+[node name="Collectible2" type="Marker2D" parent="Collectibles/Wave1/SingleCollectibleSpawner2"]
+position = Vector2(1600, 96)
+
+[node name="SingleCollectibleSpawner3" parent="Collectibles/Wave1" node_paths=PackedStringArray("collectible_marker") instance=ExtResource("7_s8va5")]
+collectible_scene = ExtResource("8_dga24")
+collectible_marker = NodePath("Collectible3")
+
+[node name="Collectible3" type="Marker2D" parent="Collectibles/Wave1/SingleCollectibleSpawner3"]
+position = Vector2(1600, 832)
 
 [connection signal="add_score" from="Player" to="LevelHUD" method="_on_player_add_score"]
 [connection signal="hit" from="Player" to="LevelHUD" method="_on_player_hit"]

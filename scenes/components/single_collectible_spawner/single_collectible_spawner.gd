@@ -25,7 +25,8 @@ func spawn() -> void:
 	$DespawnTimer.start()
 	
 func despawn() -> void:
-	collectible.queue_free()
+	if get_child_count() > 2:
+		collectible.queue_free()
 
 func _on_despawn_timer_timeout() -> void:
 	despawn()
