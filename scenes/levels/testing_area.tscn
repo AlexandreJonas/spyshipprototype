@@ -204,6 +204,7 @@ shape = SubResource("WorldBoundaryShape2D_u2265")
 
 [node name="Coin" parent="Collectibles" instance=ExtResource("6_66b72")]
 position = Vector2(288, 672)
+collect_score = 5
 
 [node name="Coin2" parent="Collectibles" instance=ExtResource("6_66b72")]
 position = Vector2(992, 544)

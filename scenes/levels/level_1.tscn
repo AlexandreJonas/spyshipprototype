@@ -170,6 +170,7 @@ point_count = 5
 [node name="Player" parent="." instance=ExtResource("1_6iamk")]
 
 [node name="LevelHUD" parent="." instance=ExtResource("2_nsrm0")]
+current_scene_path = "res://scenes/levels/level_1.tscn"
 
 [node name="CameraWall" type="StaticBody2D" parent="."]
 collision_layer = 16

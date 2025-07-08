@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c1n402kurieya"]
+[gd_scene load_steps=16 format=3 uid="uid://c1n402kurieya"]
 
 [ext_resource type="PackedScene" uid="uid://bkmetairadjew" path="res://scenes/entity/player.tscn" id="1_1ibla"]
 [ext_resource type="PackedScene" uid="uid://bdmnr5wbwsysp" path="res://scenes/UI/level_hud.tscn" id="2_rp2hk"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://ceiildqaww2mb" path="res://scenes/entity/swimmer.tscn" id="4_smegm"]
 [ext_resource type="PackedScene" uid="uid://djvjydc273kt1" path="res://scenes/components/path_follow_mob/path_follow_mob.tscn" id="5_8o7m0"]
 [ext_resource type="PackedScene" uid="uid://bxwgfbjvbuicb" path="res://scenes/components/single_mob_spawner/single_mob_spawner.tscn" id="5_ce5vw"]
+[ext_resource type="PackedScene" uid="uid://di1nbynaq8cib" path="res://scenes/components/single_collectible_spawner/single_collectible_spawner.tscn" id="7_ygi27"]
+[ext_resource type="PackedScene" uid="uid://c4o24a1kv1wvh" path="res://scenes/interactable/coin.tscn" id="8_0psk2"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_smegm"]
 
@@ -101,6 +103,23 @@ curve = SubResource("Curve2D_uspm2")
 position = Vector2(448, 64)
 rotation = 1.5708
 speed = 0.12
+
+[node name="Collectibles" type="Node" parent="."]
+
+[node name="SingleCollectibleSpawner" parent="Collectibles" node_paths=PackedStringArray("collectible_marker") instance=ExtResource("7_ygi27")]
+collectible_scene = ExtResource("8_0psk2")
+collectible_marker = NodePath("Collectible1")
+
+[node name="Collectible1" type="Marker2D" parent="Collectibles/SingleCollectibleSpawner"]
+position = Vector2(313, 320)
+
+[node name="SingleCollectibleSpawner2" parent="Collectibles" node_paths=PackedStringArray("collectible_marker") instance=ExtResource("7_ygi27")]
+collectible_scene = ExtResource("8_0psk2")
+collectible_marker = NodePath("Collectible2")
+collectible_score = 5
+
+[node name="Collectible2" type="Marker2D" parent="Collectibles/SingleCollectibleSpawner2"]
+position = Vector2(1156, 384)
 
 [connection signal="add_score" from="Player" to="LevelHUD" method="_on_player_add_score"]
 [connection signal="hit" from="Player" to="LevelHUD" method="_on_player_hit"]
