@@ -17,6 +17,8 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not is_active:
 		$MobTimer.stop()
+	elif $MobTimer.is_stopped():
+		$MobTimer.start()
 
 
 func _on_mob_timer_timeout() -> void:
