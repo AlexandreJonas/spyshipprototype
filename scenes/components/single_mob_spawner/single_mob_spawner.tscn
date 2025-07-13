@@ -4,3 +4,7 @@
 
 [node name="SingleMobSpawner" type="Node"]
 script = ExtResource("1_fiua6")
+
+[node name="DespawnTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="DespawnTimer" to="." method="_on_despawn_timer_timeout"]
