@@ -1,6 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://c5e126xm3kgjd"]
+[gd_scene load_steps=6 format=3 uid="uid://c5e126xm3kgjd"]
 
 [ext_resource type="Script" uid="uid://bn2ktvop2u3fm" path="res://scenes/UI/game_over.gd" id="1_njkqv"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_njkqv"]
+action = &"enter_menu"
+
+[sub_resource type="Shortcut" id="Shortcut_vop4n"]
+events = [SubResource("InputEventAction_njkqv")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_vop4n"]
+action = &"return_menu"
+
+[sub_resource type="Shortcut" id="Shortcut_l48yu"]
+events = [SubResource("InputEventAction_vop4n")]
 
 [node name="GameOver" type="CanvasLayer"]
 script = ExtResource("1_njkqv")
@@ -30,6 +42,7 @@ offset_bottom = 199.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 150
+shortcut = SubResource("Shortcut_vop4n")
 text = "Try Again"
 
 [node name="btnReturnMainMenu" type="Button" parent="."]
@@ -45,6 +58,7 @@ offset_bottom = -94.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 80
+shortcut = SubResource("Shortcut_l48yu")
 text = "Return To Title"
 
 [connection signal="pressed" from="btnTryAgain" to="." method="_on_btn_try_again_pressed"]
