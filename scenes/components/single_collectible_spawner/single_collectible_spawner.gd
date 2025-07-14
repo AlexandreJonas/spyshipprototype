@@ -1,4 +1,5 @@
 extends Node
+@export var auto_start : bool = false
 @export var collectible_scene : PackedScene
 @export var collectible_marker : Marker2D
 @export var collectible_score : int = 10
@@ -9,7 +10,8 @@ var collectible
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$DespawnTimer.wait_time = time_on_screen
-	spawn()
+	if auto_start:
+		spawn()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,7 +24,8 @@ func spawn() -> void:
 	collectible.position = collectible_marker.position
 	add_child(collectible)
 	
-	$DespawnTimer.start()
+	if time_on_screen > 0:
+		$DespawnTimer.start()
 	
 func despawn() -> void:
 	if get_child_count() > 2:

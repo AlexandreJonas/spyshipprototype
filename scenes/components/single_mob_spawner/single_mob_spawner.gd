@@ -1,4 +1,5 @@
 extends Node
+@export var auto_start : bool = false
 @export var time_on_screen : int = 20
 @export var mob_path: Path2D
 @export var mob_follow_scene : PackedScene = preload("res://scenes/components/path_follow_mob/path_follow_mob.tscn")
@@ -13,7 +14,8 @@ var mob_spawn_location : PathFollow2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$DespawnTimer.wait_time = time_on_screen
-	spawn()
+	if auto_start:
+		spawn()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
