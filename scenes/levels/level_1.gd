@@ -55,8 +55,24 @@ func time_control_spawns() -> void:
 			$SpawnLines/Wave2/Line3/Line3Coin1.spawn()
 			$SpawnLines/Wave2/Line3/Line3Mob2.spawn()
 			
+			$SpawnLines/Wave2/Line3/Line3Mob3.spawn()
+			$SpawnLines/Wave2/Line3/Line3Coin2.spawn()
+			$SpawnLines/Wave2/Line3/Line3Mob4.spawn()
+			
+			$SpawnLines/Wave2/Line4/Line4Mob1.spawn()
+			$Collectibles/Wave3/Wave3Coin1.spawn()
+			$SpawnLines/Wave2/Line4/Line4Mob2.spawn()
+			
 		60:
 			$SpawnLines/Wave2/Line3/Line3Mob1.despawn()
 			$SpawnLines/Wave2/Line3/Line3Coin1.despawn()
 			$SpawnLines/Wave2/Line3/Line3Mob2.despawn()
+			
+			$SpawnLines/Wave2/Line3/Line3Mob3.despawn()
+			$SpawnLines/Wave2/Line3/Line3Coin2.despawn()
+			$SpawnLines/Wave2/Line3/Line3Mob4.despawn()
+			
+			$SpawnLines/Wave2/Line4/Line4Mob1.despawn()
+			$Collectibles/Wave3/Wave3Coin1.despawn()
+			$SpawnLines/Wave2/Line4/Line4Mob2.despawn()
 			

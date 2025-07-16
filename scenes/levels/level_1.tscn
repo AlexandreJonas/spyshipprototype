@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://gawuk0pgki82"]
+[gd_scene load_steps=21 format=3 uid="uid://gawuk0pgki82"]
 
 [ext_resource type="PackedScene" uid="uid://bkmetairadjew" path="res://scenes/entity/player.tscn" id="1_6iamk"]
 [ext_resource type="Script" uid="uid://c1jcgujgtyltn" path="res://scenes/levels/level_1.gd" id="1_dga24"]
@@ -174,6 +174,12 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="Curve2D" id="Curve2D_qxy0u"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1152, 320, 0, 0, 0, 0, 1152, 616, 0, 0, 0, 0, 1408, 616, 0, 0, 0, 0, 1408, 320, 0, 0, 0, 0, 1152, 320)
+}
+point_count = 5
+
 [node name="Level_1" type="Node2D"]
 script = ExtResource("1_dga24")
 
@@ -278,6 +284,40 @@ mob_path = NodePath("../MobPath3")
 mob_scene = ExtResource("5_sk5k4")
 spawn_path_point = 0.114
 
+[node name="Line3Mob3" parent="SpawnLines/Wave2/Line3" node_paths=PackedStringArray("mob_path") instance=ExtResource("7_oc4kc")]
+mob_path = NodePath("../MobPath3")
+mob_scene = ExtResource("5_sk5k4")
+spawn_path_point = 0.73
+
+[node name="Line3Coin2" parent="SpawnLines/Wave2/Line3" node_paths=PackedStringArray("mob_path") instance=ExtResource("7_oc4kc")]
+mob_path = NodePath("../MobPath3")
+mob_scene = ExtResource("8_dga24")
+spawn_path_point = 0.686
+
+[node name="Line3Mob4" parent="SpawnLines/Wave2/Line3" node_paths=PackedStringArray("mob_path") instance=ExtResource("7_oc4kc")]
+mob_path = NodePath("../MobPath3")
+mob_scene = ExtResource("5_sk5k4")
+spawn_path_point = 0.642
+
+[node name="Line4" type="Node" parent="SpawnLines/Wave2"]
+
+[node name="MobPath4" type="Path2D" parent="SpawnLines/Wave2/Line4"]
+curve = SubResource("Curve2D_qxy0u")
+
+[node name="Line4Mob1" parent="SpawnLines/Wave2/Line4" node_paths=PackedStringArray("mob_path") instance=ExtResource("7_oc4kc")]
+time_on_screen = 0
+mob_path = NodePath("../MobPath4")
+mob_scene = ExtResource("5_sk5k4")
+speed = 0.5
+spawn_path_point = 0.138
+
+[node name="Line4Mob2" parent="SpawnLines/Wave2/Line4" node_paths=PackedStringArray("mob_path") instance=ExtResource("7_oc4kc")]
+time_on_screen = 0
+mob_path = NodePath("../MobPath4")
+mob_scene = ExtResource("5_sk5k4")
+speed = 0.5
+spawn_path_point = 0.631
+
 [node name="Collectibles" type="Node" parent="."]
 
 [node name="Wave1" type="Node" parent="Collectibles"]
@@ -337,6 +377,15 @@ collectible_marker = NodePath("Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="Collectibles/Wave2/Wave2Coin3"]
 position = Vector2(1120, 472)
+
+[node name="Wave3" type="Node" parent="Collectibles"]
+
+[node name="Wave3Coin1" parent="Collectibles/Wave3" node_paths=PackedStringArray("collectible_marker") instance=ExtResource("7_s8va5")]
+collectible_scene = ExtResource("8_dga24")
+collectible_marker = NodePath("MarkerWave3Coin1")
+
+[node name="MarkerWave3Coin1" type="Marker2D" parent="Collectibles/Wave3/Wave3Coin1"]
+position = Vector2(1280, 472)
 
 [node name="Clock" type="Timer" parent="."]
 autostart = true
