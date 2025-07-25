@@ -229,7 +229,6 @@ scale = Vector2(1, 1.2215)
 [connection signal="add_score" from="Player" to="LevelHUD" method="_on_player_add_score"]
 [connection signal="hit" from="Player" to="LevelHUD" method="_on_player_hit"]
 [connection signal="entered_by_back" from="Walker" to="LevelHUD" method="_on_walker_entered_by_back"]
-[connection signal="game_over" from="LevelHUD" to="Player" method="_on_level_hud_game_over"]
 [connection signal="signal_new_game" from="LevelHUD" to="Player" method="_on_level_hud_signal_new_game"]
 [connection signal="pressed" from="Button" to="LevelHUD" method="_on_button_pressed"]
 [connection signal="add_score" from="Collectibles/Coin" to="LevelHUD" method="_on_coin_add_score"]

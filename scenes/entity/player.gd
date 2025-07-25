@@ -80,8 +80,3 @@ func _on_back_area_entered(area: Area2D) -> void:
 		var collect_score = area.collect_score
 		add_score.emit(collect_score,"Finders Keepers")
 		area.queue_free()
-	
-
-
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	print('IM OUT')
