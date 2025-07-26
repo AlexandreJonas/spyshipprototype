@@ -30,6 +30,9 @@ func update_lifes(life_to_sub:int) -> void:
 		game_over(false)
 		
 func new_game() -> void:
+	var player = get_node("../Player")
+	player.hit.connect(_on_player_hit)
+	player.add_score.connect(_on_player_add_score)
 	score = 0
 	lifes = 3
 	update_score(0)
