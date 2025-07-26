@@ -4,6 +4,9 @@ var current_scene = null
 var previous_scene = null
 var current_scene_path = null
 
+var is_level_win : bool = false
+var final_score : int = 0
+
 func _ready() -> void:
 	var root = get_tree().root
 	# Using a negative index counts from the end, so this gets the last child node of `root`.
@@ -23,7 +26,6 @@ func goto_scene(path):
 func _deferred_goto_scene(path):
 	# It is now safe to remove the current scene.
 	current_scene.free()
-	print(previous_scene)
 
 	# Load the new scene.
 	var s = ResourceLoader.load(path)

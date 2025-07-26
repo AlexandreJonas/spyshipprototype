@@ -1,6 +1,8 @@
 extends Node2D
 var time : int = 0
 
+signal signal_end_level
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -75,4 +77,6 @@ func time_control_spawns() -> void:
 			$SpawnLines/Wave2/Line4/Line4Mob1.despawn()
 			$Collectibles/Wave3/Wave3Coin1.despawn()
 			$SpawnLines/Wave2/Line4/Line4Mob2.despawn()
+			
+			signal_end_level.emit()
 			

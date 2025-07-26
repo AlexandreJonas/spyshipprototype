@@ -27,14 +27,19 @@ func update_lifes(life_to_sub:int) -> void:
 		lifes -= life_to_sub
 		$lbl_life_value.text = str(lifes)
 	else:
-		Global.current_scene_path = current_scene_path
-		Global.goto_scene("res://scenes/UI/game_over.tscn")
+		game_over(false)
 		
 func new_game() -> void:
 	score = 0
 	lifes = 3
 	update_score(0)
 	update_lifes(0)
+	
+func game_over(is_level_win : bool) -> void:
+	Global.final_score = score
+	Global.is_level_win = is_level_win
+	Global.current_scene_path = current_scene_path
+	Global.goto_scene("res://scenes/UI/game_over.tscn")
 
 func _on_player_add_score(score: int, score_message: String) -> void:
 	update_score(score)
@@ -47,14 +52,5 @@ func _on_button_pressed() -> void:
 	new_game()
 	signal_new_game.emit()
 
-func _on_swimmer_entered_by_back(score: int, score_message: String) -> void:
-	update_score(score)
-	update_log(score_message)
-	
-func _on_walker_entered_by_back(score: int, score_message: String) -> void:
-	update_score(score)
-	update_log(score_message)
-	
-func _on_coin_add_score(score:int,score_message:String):
-	update_score(score)
-	update_log(score_message)
+func _on_level_1_signal_end_level() -> void:
+	game_over(true)

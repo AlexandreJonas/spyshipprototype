@@ -22,12 +22,14 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -746.0
-offset_top = 112.0
+offset_top = 16.0
 offset_right = 749.0
-offset_bottom = 454.0
+offset_bottom = 358.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 250
 text = "Game Over!!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="btnTryAgain" type="Button" parent="."]
 anchors_preset = 8
@@ -36,9 +38,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -370.0
-offset_top = -14.0
+offset_top = 66.0
 offset_right = 350.0
-offset_bottom = 199.0
+offset_bottom = 279.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 150
@@ -52,14 +54,32 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -306.0
-offset_top = -212.0
+offset_top = -132.0
 offset_right = 300.0
-offset_bottom = -94.0
+offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 80
 shortcut = SubResource("Shortcut_l48yu")
 text = "Return To Title"
+
+[node name="lblFinalScore" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -598.5
+offset_top = -155.665
+offset_right = 598.5
+offset_bottom = 63.335
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 160
+text = "Final Score: 500 !!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="btnTryAgain" to="." method="_on_btn_try_again_pressed"]
 [connection signal="pressed" from="btnReturnMainMenu" to="." method="_on_btn_return_main_menu_pressed"]
