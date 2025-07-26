@@ -3,10 +3,10 @@ var time : int = 0
 
 signal signal_end_level
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	time_control_spawns()
+	$LevelHUD.visible = false
+	#time_control_spawns()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -80,3 +80,8 @@ func time_control_spawns() -> void:
 			
 			signal_end_level.emit()
 			
+
+func _on_new_game_signal_new_game() -> void:
+	$LevelHUD.visible = true
+	time_control_spawns()
+	$Clock.start()
