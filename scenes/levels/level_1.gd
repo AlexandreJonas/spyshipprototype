@@ -5,13 +5,9 @@ var player
 
 signal signal_end_level
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$LevelHUD.visible = false
-	#time_control_spawns()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
@@ -81,7 +77,6 @@ func time_control_spawns() -> void:
 			$SpawnLines/Wave2/Line4/Line4Mob2.despawn()
 			
 			signal_end_level.emit()
-			
 
 func _on_new_game_signal_new_game() -> void:
 	player = player_scene.instantiate()

@@ -10,7 +10,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
 func _on_btn_return_main_menu_pressed() -> void:
 	Global.goto_scene("res://scenes/UI/main_menu.tscn")
 
