@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cayqak7t51rye"]
+
+[ext_resource type="Script" uid="uid://brkytiutyrhks" path="res://scenes/components/clock/clock.gd" id="1_si6xp"]
+
+[node name="Clock" type="Node2D"]
+script = ExtResource("1_si6xp")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

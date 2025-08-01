@@ -11,7 +11,7 @@ func _ready() -> void:
 	update_lifes(0)
 
 func _process(delta: float) -> void:
-	pass
+	$lbl_clock_value.text = $Clock.get_clock_str()
 
 func update_score(score_to_add:int) -> void:
 	score += score_to_add
@@ -35,6 +35,7 @@ func new_game() -> void:
 	lifes = 3
 	update_score(0)
 	update_lifes(0)
+	$Clock.start_clock()
 	
 func game_over(is_level_win : bool) -> void:
 	Global.final_score = score

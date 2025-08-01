@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdmnr5wbwsysp"]
+[gd_scene load_steps=3 format=3 uid="uid://bdmnr5wbwsysp"]
 
 [ext_resource type="Script" uid="uid://fcdthpt33dgb" path="res://scenes/UI/level_hud.gd" id="1_qxveu"]
+[ext_resource type="PackedScene" uid="uid://cayqak7t51rye" path="res://scenes/components/clock/clock.tscn" id="2_l4s1o"]
 
 [node name="LevelHUD" type="CanvasLayer"]
 script = ExtResource("1_qxveu")
@@ -20,11 +21,11 @@ text = "1000"
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 23.0
+offset_left = -636.0
+offset_bottom = 84.0
 grow_horizontal = 0
 theme_override_font_sizes/font_size = 61
-text = "Logs:                       "
+text = "Tech points: "
 uppercase = true
 
 [node name="lbl_log_message" type="Label" parent="."]
@@ -39,16 +40,26 @@ theme_override_font_sizes/font_size = 46
 uppercase = true
 
 [node name="lbl_lifes" type="Label" parent="."]
-offset_right = 41.0
-offset_bottom = 23.0
+offset_top = 27.605
+offset_right = 192.0
+offset_bottom = 132.605
 theme_override_font_sizes/font_size = 76
 text = "Lifes:"
 
 [node name="lbl_life_value" type="Label" parent="."]
 offset_left = 250.0
-offset_top = -27.605
 offset_right = 313.0
-offset_bottom = 124.395
+offset_bottom = 152.0
 theme_override_font_sizes/font_size = 111
 text = "0"
 horizontal_alignment = 2
+
+[node name="lbl_clock_value" type="Label" parent="."]
+offset_left = 400.0
+offset_right = 621.0
+offset_bottom = 152.0
+theme_override_font_sizes/font_size = 111
+text = "0:00"
+horizontal_alignment = 2
+
+[node name="Clock" parent="." instance=ExtResource("2_l4s1o")]
