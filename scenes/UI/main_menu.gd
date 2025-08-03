@@ -9,4 +9,4 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_btn_start_game_pressed() -> void:
-	Global.goto_scene("res://scenes/levels/testing_area.tscn")
+	Global.goto_scene("res://scenes/levels/level_1.tscn")
