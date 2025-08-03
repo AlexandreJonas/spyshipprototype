@@ -3,6 +3,9 @@ extends CanvasLayer
 @export var current_scene_path: String = "res://scenes/levels/testing_area.tscn"
 var score :int = 0
 var lifes :int = 3
+var tween := create_tween()
+var visible_color = Color(1.0, 1.0, 1.0, 1.0)
+var invisible_color = Color(1.0, 1.0, 1.0, 0.2)
 
 signal signal_new_game
 
@@ -11,19 +14,19 @@ func _ready() -> void:
 	update_lifes(0)
 
 func _process(delta: float) -> void:
-	$lbl_clock_value.text = $Clock.get_clock_str()
+	$Panel/lbl_clock_value.text = $Clock.get_clock_str()
 
 func update_score(score_to_add:int) -> void:
 	score += score_to_add
-	$lbl_score.text = str(score)
+	$Panel/lbl_score.text = str(score)
 
 func update_log(message:String) -> void:
-	$lbl_log_message.text = message
+	$Panel/lbl_log_message.text = message
 	
 func update_lifes(life_to_sub:int) -> void:
 	if lifes > 0:
 		lifes -= life_to_sub
-		$lbl_life_value.text = str(lifes)
+		$Panel/lbl_life_value.text = str(lifes)
 	else:
 		game_over(false)
 		
@@ -56,3 +59,24 @@ func _on_button_pressed() -> void:
 
 func _on_level_1_signal_end_level() -> void:
 	game_over(true)
+
+func decrease_opacity() -> void:
+	reset_tween()
+	tween.tween_property($Panel,"modulate",invisible_color,1.0)
+	
+func increase_opacity() -> void:
+	reset_tween()
+	tween.tween_property($Panel,"modulate",visible_color,1.0)
+	
+func reset_tween() -> void:
+	if tween:
+		tween.kill()
+	tween = create_tween()
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	print('IM IN')
+	decrease_opacity()
+
+func _on_area_2d_area_exited(area: Area2D) -> void:
+	print('IM OUT')
+	increase_opacity()
