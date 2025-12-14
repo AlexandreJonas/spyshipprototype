@@ -74,9 +74,7 @@ func reset_tween() -> void:
 	tween = create_tween()
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	print('IM IN')
 	decrease_opacity()
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
-	print('IM OUT')
 	increase_opacity()

@@ -8,9 +8,7 @@ var is_level_win : bool = false
 var final_score : int = 0
 
 func _ready() -> void:
-	var root = get_tree().root
-	# Using a negative index counts from the end, so this gets the last child node of `root`.
-	current_scene = root.get_child(-1)
+	get_root()
 
 func goto_scene(path):
 	# This function will usually be called from a signal callback,
@@ -21,6 +19,7 @@ func goto_scene(path):
 
 	# The solution is to defer the load to a later time, when
 	# we can be sure that no code from the current scene is running:
+	get_root()
 	_deferred_goto_scene.call_deferred(path)
 	
 func _deferred_goto_scene(path):
@@ -38,3 +37,8 @@ func _deferred_goto_scene(path):
 
 	# Optionally, to make it compatible with the SceneTree.change_scene_to_file() API.
 	get_tree().current_scene = current_scene
+	
+func get_root() -> void:
+	var root = get_tree().root
+	# Using a negative index counts from the end, so this gets the last child node of `root`.
+	current_scene = root.get_child(-1)

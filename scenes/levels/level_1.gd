@@ -81,7 +81,6 @@ func time_control_spawns() -> void:
 func _on_new_game_signal_new_game() -> void:
 	player = player_scene.instantiate()
 	player.position = $PlayerStartMarker.position
-	print(player.name)
 	add_child(player)
 	$LevelHUD.visible = true
 	$LevelHUD.new_game()
