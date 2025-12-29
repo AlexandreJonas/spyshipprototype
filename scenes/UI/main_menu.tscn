@@ -50,3 +50,4 @@ text = "Exit
 "
 
 [connection signal="pressed" from="btnStartGame" to="." method="_on_btn_start_game_pressed"]
+[connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]

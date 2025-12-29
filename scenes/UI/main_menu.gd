@@ -10,3 +10,7 @@ func _process(delta: float) -> void:
 
 func _on_btn_start_game_pressed() -> void:
 	Global.goto_scene("res://scenes/levels/level_1.tscn")
+
+
+func _on_btn_exit_pressed() -> void:
+	get_tree().quit()
