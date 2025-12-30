@@ -1,6 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5e126xm3kgjd"]
+[gd_scene load_steps=8 format=3 uid="uid://c5e126xm3kgjd"]
 
 [ext_resource type="Script" uid="uid://bn2ktvop2u3fm" path="res://scenes/UI/game_over.gd" id="1_njkqv"]
+[ext_resource type="StyleBox" uid="uid://b47hfsesv0j3t" path="res://scenes/UI/main_menu_btn_hover.tres" id="2_l48yu"]
+[ext_resource type="StyleBox" uid="uid://bdpbt5swwj6ka" path="res://scenes/UI/main_menu_btn.tres" id="3_a2ham"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_njkqv"]
 action = &"enter_menu"
@@ -44,6 +46,9 @@ offset_bottom = 279.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 150
+theme_override_styles/hover = ExtResource("2_l48yu")
+theme_override_styles/pressed = ExtResource("3_a2ham")
+theme_override_styles/normal = ExtResource("3_a2ham")
 shortcut = SubResource("Shortcut_vop4n")
 text = "Try Again"
 
@@ -54,12 +59,15 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -306.0
-offset_top = -132.0
+offset_top = -151.0
 offset_right = 300.0
-offset_bottom = -14.0
+offset_bottom = -31.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 80
+theme_override_styles/hover = ExtResource("2_l48yu")
+theme_override_styles/pressed = ExtResource("3_a2ham")
+theme_override_styles/normal = ExtResource("3_a2ham")
 shortcut = SubResource("Shortcut_l48yu")
 text = "Return To Title"
 
