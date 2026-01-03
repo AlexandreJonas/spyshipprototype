@@ -2,11 +2,13 @@ extends Node2D
 var time : int = 0
 var player_scene : PackedScene = preload("res://scenes/entity/player.tscn")
 var player
+@onready var obscureBackGround : CanvasLayer = $ObscureBackGround
 
 signal signal_end_level
 
 func _ready() -> void:
 	$LevelHUD.visible = false
+	obscureBackGround.visible = true
 
 func _process(delta: float) -> void:
 	pass
@@ -79,6 +81,7 @@ func time_control_spawns() -> void:
 			signal_end_level.emit()
 
 func _on_new_game_signal_new_game() -> void:
+	obscureBackGround.visible = false
 	player = player_scene.instantiate()
 	player.position = $PlayerStartMarker.position
 	add_child(player)
@@ -86,3 +89,11 @@ func _on_new_game_signal_new_game() -> void:
 	$LevelHUD.new_game()
 	time_control_spawns()
 	$Clock.start()
+
+
+func _on_pause_menu_game_paused() -> void:
+	obscureBackGround.visible = true
+
+
+func _on_pause_menu_game_resumed() -> void:
+	obscureBackGround.visible = false

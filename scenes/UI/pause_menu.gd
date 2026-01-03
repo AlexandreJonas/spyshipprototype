@@ -1,5 +1,8 @@
 extends Control
 
+signal gamePaused
+signal gameResumed
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	visible = false
@@ -14,10 +17,12 @@ func _process(delta: float) -> void:
 	
 func resume() -> void:
 	visible = false
+	gameResumed.emit()
 	get_tree().paused = false
 	
 func pause() -> void:
 	visible = true
+	gamePaused.emit()
 	get_tree().paused = true
 
 func _on_btn_resume_pressed() -> void:
