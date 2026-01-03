@@ -19,17 +19,44 @@ events = [SubResource("InputEventAction_vop4n")]
 [node name="GameOver" type="CanvasLayer"]
 script = ExtResource("1_njkqv")
 
-[node name="lblGameOver" type="Label" parent="."]
+[node name="Panel" type="Panel" parent="."]
+offset_left = 104.0
+offset_top = 62.09
+offset_right = 1599.0
+offset_bottom = 502.09
+theme_override_styles/panel = ExtResource("3_a2ham")
+
+[node name="lblGameOver" type="Label" parent="Panel"]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -746.0
-offset_top = 16.0
-offset_right = 749.0
-offset_bottom = 358.0
+offset_left = -747.5
+offset_top = -56.0
+offset_right = 747.5
+offset_bottom = 286.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 250
 text = "Game Over!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="lblFinalScore" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -665.0
+offset_top = 22.335
+offset_right = 662.0
+offset_bottom = 241.335
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 160
+text = "Final Score: 500 !!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -70,24 +97,6 @@ theme_override_styles/pressed = ExtResource("3_a2ham")
 theme_override_styles/normal = ExtResource("3_a2ham")
 shortcut = SubResource("Shortcut_l48yu")
 text = "Return To Title"
-
-[node name="lblFinalScore" type="Label" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -598.5
-offset_top = -155.665
-offset_right = 598.5
-offset_bottom = 63.335
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 160
-text = "Final Score: 500 !!"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="pressed" from="btnTryAgain" to="." method="_on_btn_try_again_pressed"]
 [connection signal="pressed" from="btnReturnMainMenu" to="." method="_on_btn_return_main_menu_pressed"]

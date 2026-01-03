@@ -1,10 +1,14 @@
 extends CanvasLayer
 
+@onready var lblFinalScore : Label = $Panel/lblFinalScore
+@onready var lblGameOver : Label = $Panel/lblGameOver
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$lblFinalScore.text = "Final Score: " + str(Global.final_score) + " !!"
+	
+	lblFinalScore.text = "Final Score: " + str(Global.final_score) + " !!"
 	if Global.is_level_win:
-		$lblGameOver.text = "You Won!!"
+		lblGameOver.text = "You Won!!"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdmnr5wbwsysp"]
+[gd_scene load_steps=5 format=3 uid="uid://bdmnr5wbwsysp"]
 
 [ext_resource type="Script" uid="uid://fcdthpt33dgb" path="res://scenes/UI/level_hud.gd" id="1_qxveu"]
 [ext_resource type="PackedScene" uid="uid://cayqak7t51rye" path="res://scenes/components/clock/clock.tscn" id="2_l4s1o"]
+[ext_resource type="StyleBox" uid="uid://dywr512urmesl" path="res://scenes/UI/level_hud.tres" id="2_v3aib"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4s1o"]
 size = Vector2(1705, 162)
@@ -12,6 +13,7 @@ script = ExtResource("1_qxveu")
 [node name="Panel" type="Panel" parent="."]
 offset_right = 1700.0
 offset_bottom = 136.0
+theme_override_styles/panel = ExtResource("2_v3aib")
 
 [node name="lbl_score" type="Label" parent="Panel"]
 layout_mode = 1
@@ -55,7 +57,7 @@ offset_top = 27.605
 offset_right = 192.0
 offset_bottom = 132.605
 theme_override_font_sizes/font_size = 76
-text = "Lifes:"
+text = " Lifes:"
 
 [node name="lbl_life_value" type="Label" parent="Panel"]
 layout_mode = 0
