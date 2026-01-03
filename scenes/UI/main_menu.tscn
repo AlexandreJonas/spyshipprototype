@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://p7lrpuxdirxs"]
+[gd_scene load_steps=5 format=3 uid="uid://p7lrpuxdirxs"]
 
 [ext_resource type="Script" uid="uid://bjful3lgk6lle" path="res://scenes/UI/main_menu.gd" id="1_qwnig"]
 [ext_resource type="StyleBox" uid="uid://b47hfsesv0j3t" path="res://scenes/UI/main_menu_btn_hover.tres" id="2_5jstl"]
+[ext_resource type="StyleBox" uid="uid://bkx7dx6v3igoy" path="res://scenes/UI/round_ui.tres" id="2_tfcbk"]
 [ext_resource type="StyleBox" uid="uid://bdpbt5swwj6ka" path="res://scenes/UI/main_menu_btn.tres" id="2_yonvy"]
 
 [node name="MainMenu" type="CanvasLayer"]
@@ -16,8 +17,9 @@ offset_top = 88.0
 offset_right = 39.0
 offset_bottom = 128.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 250
-text = "SPY(SHIP)"
+theme_override_font_sizes/font_size = 200
+theme_override_styles/normal = ExtResource("2_tfcbk")
+text = "HIDDEN;VESSEL"
 
 [node name="btnStartGame" type="Button" parent="."]
 anchors_preset = 8
@@ -25,10 +27,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -410.0
-offset_top = -22.0
-offset_right = 415.0
-offset_bottom = 191.0
+offset_left = -411.0
+offset_top = 13.14
+offset_right = 416.0
+offset_bottom = 228.14
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -45,9 +47,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -122.0
-offset_top = 218.0
+offset_top = 264.64
 offset_right = 160.0
-offset_bottom = 391.0
+offset_bottom = 439.64
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 120
