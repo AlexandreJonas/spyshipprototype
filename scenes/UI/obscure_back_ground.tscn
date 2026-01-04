@@ -5,3 +5,4 @@
 [node name="Panel" type="Panel" parent="."]
 offset_right = 1700.0
 offset_bottom = 940.0
+mouse_filter = 2

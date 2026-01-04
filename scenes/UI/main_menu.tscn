@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://p7lrpuxdirxs"]
+[gd_scene load_steps=6 format=3 uid="uid://p7lrpuxdirxs"]
 
 [ext_resource type="Script" uid="uid://bjful3lgk6lle" path="res://scenes/UI/main_menu.gd" id="1_qwnig"]
 [ext_resource type="StyleBox" uid="uid://b47hfsesv0j3t" path="res://scenes/UI/main_menu_btn_hover.tres" id="2_5jstl"]
 [ext_resource type="StyleBox" uid="uid://bkx7dx6v3igoy" path="res://scenes/UI/round_ui.tres" id="2_tfcbk"]
 [ext_resource type="StyleBox" uid="uid://bdpbt5swwj6ka" path="res://scenes/UI/main_menu_btn.tres" id="2_yonvy"]
+[ext_resource type="PackedScene" uid="uid://lyr4nar6nfos" path="res://scenes/UI/backgound_image.tscn" id="5_e2p27"]
 
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_qwnig")
@@ -58,6 +59,8 @@ theme_override_styles/pressed = ExtResource("2_yonvy")
 theme_override_styles/normal = ExtResource("2_yonvy")
 text = "Exit
 "
+
+[node name="BackgoundImage" parent="." instance=ExtResource("5_e2p27")]
 
 [connection signal="pressed" from="btnStartGame" to="." method="_on_btn_start_game_pressed"]
 [connection signal="pressed" from="btnExit" to="." method="_on_btn_exit_pressed"]

@@ -9,4 +9,5 @@ script = ExtResource("1_vdha2")
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 1704.0
 offset_bottom = 944.0
+mouse_filter = 2
 expand_mode = 3

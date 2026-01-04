@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://gawuk0pgki82"]
+[gd_scene load_steps=24 format=3 uid="uid://gawuk0pgki82"]
 
 [ext_resource type="Script" uid="uid://c1jcgujgtyltn" path="res://scenes/levels/level_1.gd" id="1_dga24"]
 [ext_resource type="PackedScene" uid="uid://bdmnr5wbwsysp" path="res://scenes/UI/level_hud.tscn" id="2_nsrm0"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://di1nbynaq8cib" path="res://scenes/components/single_collectible_spawner/single_collectible_spawner.tscn" id="7_s8va5"]
 [ext_resource type="PackedScene" uid="uid://c4o24a1kv1wvh" path="res://scenes/interactable/coin.tscn" id="8_dga24"]
 [ext_resource type="PackedScene" uid="uid://bp8f3h7tk306n" path="res://scenes/UI/pause_menu.tscn" id="10_qxy0u"]
+[ext_resource type="PackedScene" uid="uid://lyr4nar6nfos" path="res://scenes/UI/backgound_image.tscn" id="12_iav0o"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_6iamk"]
 
@@ -400,6 +401,9 @@ position = Vector2(0, 896)
 [node name="PauseCanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PauseMenu" parent="PauseCanvasLayer" instance=ExtResource("10_qxy0u")]
+
+[node name="BackgoundImage" parent="." instance=ExtResource("12_iav0o")]
+backgroundMode = "LevelOne"
 
 [connection signal="signal_end_level" from="." to="LevelHUD" method="_on_level_1_signal_end_level"]
 [connection signal="signal_new_game" from="new_game" to="." method="_on_new_game_signal_new_game"]
