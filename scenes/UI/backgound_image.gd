@@ -11,7 +11,7 @@ func _ready() -> void:
 			BackGroundRect.texture = preload("res://assets/background/main_menu.png")
 
 		"LevelOne":
-			BackGroundRect.texture = preload("res://assets/background/level_1.png")
+			BackGroundRect.texture = preload("res://assets/background/level_1_faded.png")
 			
 		"GameOver":
 			BackGroundRect.texture = preload("res://assets/background/game_over.png")
