@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://lyr4nar6nfos"]
+
+[ext_resource type="Script" uid="uid://dewcqattg6qc1" path="res://scenes/UI/backgound_image.gd" id="1_vdha2"]
+
+[node name="BackgoundImage" type="Node2D"]
+z_index = -4096
+script = ExtResource("1_vdha2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1704.0
+offset_bottom = 944.0
+expand_mode = 3
