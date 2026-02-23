@@ -78,6 +78,7 @@ func time_control_spawns() -> void:
 			$Collectibles/Wave3/Wave3Coin1.despawn()
 			$SpawnLines/Wave2/Line4/Line4Mob2.despawn()
 			
+			$OST.stop()
 			signal_end_level.emit()
 
 func _on_new_game_signal_new_game() -> void:
@@ -89,6 +90,7 @@ func _on_new_game_signal_new_game() -> void:
 	$LevelHUD.new_game()
 	time_control_spawns()
 	$Clock.start()
+	$OST.play()
 
 
 func _on_pause_menu_game_paused() -> void:

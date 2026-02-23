@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cgl8rg81r8yh0"
+path="res://.godot/imported/Interception -Segment1-  VAL-SOUND.mp3-4466b4a68e9075e1bcf652c0eb22cdfb.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Interception -Segment1-  VAL-SOUND.mp3"
+dest_files=["res://.godot/imported/Interception -Segment1-  VAL-SOUND.mp3-4466b4a68e9075e1bcf652c0eb22cdfb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

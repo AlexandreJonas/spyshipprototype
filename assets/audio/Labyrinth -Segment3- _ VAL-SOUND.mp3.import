@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://clcfsgdjy33qo"
+path="res://.godot/imported/Labyrinth -Segment3- _ VAL-SOUND.mp3-f5984baa341915abf65da8b1599371dc.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Labyrinth -Segment3- _ VAL-SOUND.mp3"
+dest_files=["res://.godot/imported/Labyrinth -Segment3- _ VAL-SOUND.mp3-f5984baa341915abf65da8b1599371dc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
