@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://28f8h5dw3aww" path="res://assets/entity/player/playerGrey_walk2.png" id="4_j8jve"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j8jve"]
+resource_local_to_scene = true
 shader = ExtResource("2_t8xyy")
 shader_parameter/enabled = false
 shader_parameter/tint = Color(1, 1, 1, 1)
